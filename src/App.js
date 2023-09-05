@@ -6,8 +6,8 @@ import LoginForm from './pages/login/login.js';
 function App() {
   return (
     <div className="App">
-      {/* <RegistrationForm/> */}
-       <LoginForm/> 
+      <RegistrationForm/>
+       {/* <LoginForm/>  */}
     </div>
   );
 }
