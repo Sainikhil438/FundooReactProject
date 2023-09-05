@@ -1,0 +1,147 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.form-container1 {
+
+    border-radius: 15px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    height: 90vh;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin:5vh auto;
+    /* background-color: green; */
+}
+
+.form-container2 {
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+.name1 {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1vw;
+    /* background-color: red; */
+
+}
+
+.emstyle {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 1vw;
+    /* background-color: orange; */
+}
+
+.name2 {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1vw;
+    /* background-color: yellow; */
+}
+
+.links {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    padding: 1vw;
+    /* background-color: black; */
+}
+
+.cboxclass {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1vw;
+}
+
+#email {
+    width: 31vw;
+}
+.btn1{
+    text-decoration: none;
+    color: blue;
+}
+.btn2 {
+    background-color: skyblue;
+    color: black;
+    width: 35%;
+    padding: 1vw;
+    border-radius: 2vw;
+}
+
+@media(min-width:500px) and (max-width:700px) {
+    .image2 {
+        display: none;
+    }
+
+    .name1 {
+        display: block;
+    }
+
+    .name2 {
+        display: block;
+    }
+
+    .emstyle {
+        display: block;
+    }
+
+    .style {
+        display: flex;
+        flex-direction: column;
+        padding: 1vw;
+    }
+
+    #email {
+        height: 5vh;
+        width: 33vw;
+        padding: 1vw;
+    }
+
+}
+
+
+@media(min-width:701px) and (max-width:950px) {
+    .name1 {
+        display: block;
+    }
+
+    .name2 {
+        display: block;
+    }
+
+    .emstyle {
+        display: block;
+        height: 5vh;
+        width: 28.5vw;
+        padding: 1vw;
+    }
+
+    .style {
+        display: flex;
+        flex-direction: column;
+        padding: 1vw;
+    }
+
+    #email {
+        display: flex;
+        flex-direction: column;
+        height: 5vh;
+        width: 26.5vw;
+        padding: 1vw;
+    }
+}

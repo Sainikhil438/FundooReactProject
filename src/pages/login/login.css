@@ -1,0 +1,81 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.login-outer {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    height: 70vh;
+    margin: 3vh 2vw;
+    width: 50vw;
+    padding: 5vh;
+}
+
+.forpassword {
+    display: flex;
+    justify-content: space-around;
+    padding: 2vh;
+    color: blue;
+}
+
+.one {
+    /* background-color: green; */
+    padding: 2vh;
+}
+
+.two {
+    /* background-color: blue; */
+    padding: 2vh;
+}
+
+.three {
+    display: flex;
+    justify-content: space-around;
+    padding: 5vh;
+}
+
+#email1 {
+    width: 25vw;
+}
+
+#password1 {
+    width: 25vw;
+}
+
+.button {
+    background-color: skyblue;
+    color: black;
+    width: 25%;
+    padding: 1vw;
+    border-radius: 2vw;
+}
+
+@media(min-width:600px) and (max-width:700px) {
+    .one{
+        display: block;
+    }
+    #email1 {
+        width: 30vh;
+    }
+    #password1{
+        width: 30vh;
+    }
+}
+
+@media(min-width:701px) and (max-width:950px) {
+    .one{
+        display: block;
+    }
+    #email1 {
+        width: 40vh;
+    }
+    #password1{
+        width: 40vh;
+    }
+}
