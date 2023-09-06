@@ -6,30 +6,31 @@ import '../login/login.js'
 import img1 from '../../images/fundoo1.jpeg'
 import img2 from '../../images/addimage1.png'
 import { Checkbox } from '@mui/material';
+import { signUp } from '../../Services/Userservices';
 
 
-const RegisterationForm = () => {
-    const [user, setUser] = useState({
-        firstname: "", lastname: "", email: "", password: "", cpassword: ""
-    });
+const RegistrationForm = () => {
+    // const [user, setUser] = useState({
+    //     firstname: "", lastname: "", email: "", password: "", cpassword: ""
+    // });
 
-    let name, value;
+    // let name, value;
 
-    const handleInputs = (e) => {
-        console.log(e);
-        name = e.target.name;
-        value = e.target.value;
+    // const handleInputs = (e) => {
+    //     console.log(e);
+    //     name = e.target.name;
+    //     value = e.target.value;
 
-        setUser({ ...user, [name]: value });
-    }
+    //     setUser({ ...user, [name]: value });
+    // }
 
-    const handleClick = () => {
-        console.log(user);
-    }
+    // const handleClick = () => {
+    //     console.log(user);
+    // }
 
     //-----------------------------------------------------------------------
     const firstnameRegex = /^[a-zA-Z ]{2,30}$/;
-    const lastnameRegex = /^[a-zA-Z ]{2,30}$/;                        ///^[A-Za-z'-]+$/;
+    const lastnameRegex = /^[a-zA-Z ]{2,30}$/;
     const emailRegex = /^[a-z]{3,}(.[0-9a-z]*)?@([a-z]){2,}.[a-z]+(.in)*$/;
     const passwordRegex = /^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$/;
     const confirmpasswordRegex = /^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$/;
@@ -50,7 +51,7 @@ const RegisterationForm = () => {
     const takeConfirmpassword = (event) => {
         setData((prev) => ({ ...prev, confirmpassword: event.target.value }));
     };
-    const submit = () => {
+    const submit = async () => {
         let firstnameTest = firstnameRegex.test(data.firstname);
         let lastnameTest = lastnameRegex.test(data.lastname);
         let emailTest = emailRegex.test(data.email);
@@ -80,6 +81,13 @@ const RegisterationForm = () => {
             setErrorObj((prevState) => ({ ...prevState, confirmpasswordError: false, confirmpasswordHelper: "", }));
         } console.log(data);
 
+        if (firstnameTest === lastnameTest === emailTest === passwordTest === true) {
+            let response = await signUp(data);
+            console.log(response);
+            localStorage.setItem("token", response.data.data.userID);
+        }
+
+
     }
     //-----------------------------------------------------------------------------------
     return (
@@ -91,18 +99,34 @@ const RegisterationForm = () => {
                 </div>
                 <h2>Create your Fundoo Note Account</h2>
                 <div className="name1">
-                    <div className="style"><TextField name="firstname" id="firstname" label="First name" variant="outlined" autoComplete="off"
-                        //value={user.firstname}
-                        //onChange={handleInputs}
-                        placeholder="Your FirstName"
-                        size="large" error={errorObj.firstnameError} helperText={errorObj.firstnameHelper} onChange={takeFirstname}
-                    /></div>
-                    <div className="style"><TextField name="lastname" id="lastname" label="Last name" variant="outlined" autoComplete="off"
-                        //value={user.lastname}
-                        //onChange={handleInputs}
-                        placeholder="Your LaststName"
-                        size="large" error={errorObj.lastnameError} helperText={errorObj.lastnameHelper} onChange={takeLastname}
-                    /></div>
+                    <div className="style">
+                        <TextField name="firstname"
+                            id="firstname"
+                            label="First name"
+                            variant="outlined"
+                            autoComplete="off"
+                            //value={user.firstname}
+                            //onChange={handleInputs}
+                            placeholder="Your FirstName"
+                            size="large"
+                            error={errorObj.firstnameError}
+                            helperText={errorObj.firstnameHelper}
+                            onChange={takeFirstname}
+                        /></div>
+                    <div className="style">
+                        <TextField name="lastname"
+                            id="lastname"
+                            label="Last name"
+                            variant="outlined"
+                            autoComplete="off"
+                            //value={user.lastname}
+                            //onChange={handleInputs}
+                            placeholder="Your LaststName"
+                            size="large"
+                            error={errorObj.lastnameError}
+                            helperText={errorObj.lastnameHelper}
+                            onChange={takeLastname}
+                        /></div>
                 </div>
                 <div className="emstyle">
                     <div><TextField className="emailClass" name="email" id="email" label="Email" type="email" variant="outlined" autoComplete="off"
@@ -146,4 +170,4 @@ const RegisterationForm = () => {
         </div>
     )
 }
-export default RegisterationForm
+export default RegistrationForm

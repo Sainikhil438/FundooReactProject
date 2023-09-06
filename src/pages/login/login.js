@@ -4,28 +4,29 @@ import Button from '@mui/material/Button';
 import '../signup/signup.js'
 import './login.css'
 import img1 from '../../images/fundoo1.jpeg'
+import { signIn } from '../../Services/Userservices.js';
 
 const LoginForm = () => {
 
-    const [user, setUser] = useState({
-        email: "", password: ""
-    });
+    // const [user, setUser] = useState({
+    //     email: "", password: ""
+    // });
 
-    let name,value;
+    // let name,value;
 
-    const handleInputs = (e) =>
-    {
-        console.log(e);
-        name = e.target.name;
-        value= e.target.value;
+    // const handleInputs = (e) =>
+    // {
+    //     console.log(e);
+    //     name = e.target.name;
+    //     value= e.target.value;
         
-        setUser({ ...user, [name]:value});
-    }
+    //     setUser({ ...user, [name]:value});
+    // }
 
-    const handleClick =() =>
-    {
-        console.log(user);
-    }
+    // const handleClick =() =>
+    // {
+    //     console.log(user);
+    // }
 
     
 
@@ -39,7 +40,7 @@ const LoginForm = () => {
     const takepass = (event) => {
         setData((prev) => ({ ...prev, password: event.target.value }));
     };
-    const submit = () => {
+    const submit = async () => {
         let emailTest = emailRegex.test(data.email); let passwordTest = passwordRegex.test(data.password);
         if (emailTest === false) {
             setErrorObj((prevState) => ({ ...prevState, emailError: true, emailHelper: "Enter correct Email", }));
@@ -50,6 +51,12 @@ const LoginForm = () => {
         } else {
             setErrorObj((prevState) => ({ ...prevState, passwordError: false, passwordHelper: "", }));
         } console.log(data);
+
+        if (emailTest === passwordTest === true) {
+            let response = await signIn(data);
+            console.log(response);
+            localStorage.setItem("token", response.data.data);
+        }
     }
 
     return (
