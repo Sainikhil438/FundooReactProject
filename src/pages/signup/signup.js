@@ -81,6 +81,11 @@ const RegistrationForm = () => {
             setErrorObj((prevState) => ({ ...prevState, confirmpasswordError: false, confirmpasswordHelper: "", }));
         } console.log(data);
 
+        // if (firstnameTest === lastnameTest === emailTest === passwordTest === true) {
+        //     let response = await signUp(data);
+        //     console.log(response);
+        //     localStorage.setItem("token", response.data.data.userID);
+        // }
         if (firstnameTest === lastnameTest === emailTest === passwordTest === true) {
             let response = await signUp(data);
             console.log(response);
@@ -157,7 +162,7 @@ const RegistrationForm = () => {
                 </div>
 
                 <div className="links">
-                    <a className="btn1" href="login.js">login if you already have account</a>
+                    <a className="btn1" href="/">login if you already have account</a>
                     <button className="btn2" type="submit" onClick={submit}>Register</button>
                 </div>
 
@@ -170,4 +175,4 @@ const RegistrationForm = () => {
         </div>
     )
 }
-export default RegistrationForm
+export default RegistrationForm;

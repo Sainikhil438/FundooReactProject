@@ -79,11 +79,11 @@ const LoginForm = () => {
                 /></div>
                 <div className="forpassword"><a className="pword">Forgot password</a></div>
                 <div className="three">
-                    <div><a className="create" href="singup.js">Create account</a></div>
+                    <div><a className="create" href="/Signup">Create account</a></div>
                     <button className="button" type="submit" onClick={submit}>Sign in</button></div>
 
             </div>
         </div>
     )
 }
-export default LoginForm
+export default LoginForm;
