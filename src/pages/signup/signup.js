@@ -7,6 +7,7 @@ import img1 from '../../images/fundoo1.jpeg'
 import img2 from '../../images/addimage1.png'
 import { Checkbox } from '@mui/material';
 import { signUp } from '../../Services/Userservices';
+import { Link } from 'react-router-dom';
 
 
 const RegistrationForm = () => {
@@ -162,7 +163,8 @@ const RegistrationForm = () => {
                 </div>
 
                 <div className="links">
-                    <a className="btn1" href="/">login if you already have account</a>
+                    {/* <a className="btn1" href="/">login if you already have account</a> */}
+                    <Link className="btn1" to={"/"}>login if you already have account</Link>
                     <button className="btn2" type="submit" onClick={submit}>Register</button>
                 </div>
 

@@ -5,6 +5,8 @@ import '../signup/signup.js'
 import './login.css'
 import img1 from '../../images/fundoo1.jpeg'
 import { signIn } from '../../Services/Userservices.js';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
 
@@ -28,12 +30,12 @@ const LoginForm = () => {
     //     console.log(user);
     // }
 
-    
-
     const emailRegex = /^[a-z]{3,}(.[0-9a-z]*)?@([a-z]){2,}.[a-z]+(.in)*$/;
     const passwordRegex = /^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$/;
     const [data, setData] = useState({ email: "", password: "" });
     const [errorObj, setErrorObj] = useState({ emailError: false, emailHelper: "", passwordError: false, passwordHelper: "", })
+
+    const navigate = useNavigate();
     const takeEmail = (event) => {
          setData((prev) => ({ ...prev, email: event.target.value })); 
     };
@@ -56,6 +58,7 @@ const LoginForm = () => {
             let response = await signIn(data);
             console.log(response);
             localStorage.setItem("token", response.data.data);
+            navigate("/dashboard");
         }
     }
 
@@ -79,7 +82,7 @@ const LoginForm = () => {
                 /></div>
                 <div className="forpassword"><a className="pword">Forgot password</a></div>
                 <div className="three">
-                    <div><a className="create" href="/Signup">Create account</a></div>
+                    <div><Link className="create" to={"/Signup"}>Create account</Link></div>
                     <button className="button" type="submit" onClick={submit}>Sign in</button></div>
 
             </div>
